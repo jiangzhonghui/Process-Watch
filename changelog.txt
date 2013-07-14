@@ -1,0 +1,5 @@
+add/remove process
+show info about actual state
+double click to check process history (new form)
+remember processes names (xml)
+remember processes history (xml)
