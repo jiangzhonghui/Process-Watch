@@ -9,11 +9,11 @@ using System.Windows.Forms;
 
 namespace ProcesyTest
 {
-    public partial class Procesy : Form
+    public partial class ProcesyForm : Form
     {
         Watcher watcher;
 
-        public Procesy()
+        public ProcesyForm()
         {
             InitializeComponent();
             watcher = new Watcher() { ListView = listView1 };
@@ -47,25 +47,25 @@ namespace ProcesyTest
 
         delegate void AddNewProcess(string name);
 
-        //dodanie nowego procesu
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (processTextBox.Text.Length > 0)
-            {
-                AddNewProcessMethod(processTextBox.Text);                              
-                processTextBox.Text = String.Empty;
-            }
-        }
+        ////dodanie nowego procesu
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    if (processTextBox.Text.Length > 0)
+        //    {
+        //        AddNewProcessMethod(processTextBox.Text);                              
+        //        processTextBox.Text = String.Empty;
+        //    }
+        //}
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //czy nazwa ktoregos procesu zostala wybrana
-            if (listView1.SelectedIndices.Count > 0)
-            {
-                watcher.DeleteProcessName(listView1.SelectedItems[0].Text, listView1);
-            }
-            processTextBox.Text = String.Empty;
-        }
+        //private void button2_Click(object sender, EventArgs e)
+        //{
+        //    //czy nazwa ktoregos procesu zostala wybrana
+        //    if (listView1.SelectedIndices.Count > 0)
+        //    {
+        //        watcher.DeleteProcessName(listView1.SelectedItems[0].Text);
+        //    }
+        //    processTextBox.Text = String.Empty;
+        //}
 
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -75,7 +75,8 @@ namespace ProcesyTest
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            Form3 form = new Form3(watcher);
+            form.Show();
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -91,6 +92,11 @@ namespace ProcesyTest
         private void Procesy_FormClosed(object sender, FormClosedEventArgs e)
         {
 
+        }
+
+        private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            
         }
 
     }

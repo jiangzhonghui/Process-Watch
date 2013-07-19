@@ -15,7 +15,7 @@ namespace ProcesyTest
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Procesy());
+            Application.Run(new ProcesyForm());
         }
     }
 }

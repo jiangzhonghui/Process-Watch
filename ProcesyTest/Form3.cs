@@ -1,0 +1,67 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace ProcesyTest
+{
+
+    //form with settings
+
+    public partial class Form3 : Form
+    {
+        Watcher watcher;
+
+        public Form3()
+        {
+            InitializeComponent();
+        }
+
+        void RefreshProcessesListBox()
+        {
+            listBox1.Items.Clear();
+            listBox1.Items.AddRange(watcher.Processes.ToArray());
+        }
+
+        public Form3(Watcher watcher) : this()
+        {
+            this.watcher = watcher;
+            RefreshProcessesListBox();
+        }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            foreach (var item in listBox1.SelectedItems)
+            {
+                watcher.DeleteProcessName(item.ToString());
+            }
+            RefreshProcessesListBox();
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            Form4 form = new Form4();
+            var result = form.ShowDialog();
+            if(result == DialogResult.OK)
+            {
+                watcher.LoadProcessName(form.processName);
+                RefreshProcessesListBox();
+            }
+        }
+
+    }
+}

@@ -10,7 +10,7 @@ using System.IO;
 namespace ProcesyTest
 {
 
-    class Watcher
+    public class Watcher
     {
         delegate void UpdateListView(ProcessToWatch process);
 
@@ -26,12 +26,29 @@ namespace ProcesyTest
             get;
         }
 
-        Dictionary<string, ProcessToWatch> processes;    
+        Dictionary<string, ProcessToWatch> processes;
+        
+        public List<ProcessToWatch> Processes
+        {
+            private set {  }
+            get
+            {
+                return processes.Values.ToList();
+            }
+        }
+
+        ListView listView;
 
         public ListView ListView
         {
-            set;
-            get;
+            set
+            {
+                listView = value;
+            }
+            get
+            {
+                return listView;
+            }
         }
 
         public Watcher()
@@ -73,10 +90,10 @@ namespace ProcesyTest
             }
         }
 
-        public void DeleteProcessName(string name, ListView listView)
+        public void DeleteProcessName(string name)
         {
             processes.Remove(name);
-            listView.Items.Remove(listViewProcesses[name]);
+            ListView.Items.Remove(listViewProcesses[name]);
             listViewProcesses.Remove(name);
         }
 

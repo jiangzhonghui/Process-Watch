@@ -169,6 +169,11 @@ namespace ProcesyTest
             this.ProcessName = processName;
         }
 
+        public override string ToString()
+        {
+            return ProcessName;
+        }
+
         private void ProcessToWatch_Exited(object sender, System.EventArgs e)
         {
             //sprawdzamy czy byl to jedyny proces o tej nazwie
