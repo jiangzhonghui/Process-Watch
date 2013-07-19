@@ -63,5 +63,11 @@ namespace ProcesyTest
 
         }
 
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
     }
 }

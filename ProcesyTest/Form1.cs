@@ -76,7 +76,7 @@ namespace ProcesyTest
         private void button3_Click(object sender, EventArgs e)
         {
             Form3 form = new Form3(watcher);
-            form.Show();
+            form.ShowDialog();
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

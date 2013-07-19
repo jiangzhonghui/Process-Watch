@@ -81,6 +81,7 @@
             this.cancelButton.TabIndex = 4;
             this.cancelButton.Text = "cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // folderBrowserDialog1
             // 
@@ -92,7 +93,7 @@
             this.openFileDialog1.ReadOnlyChecked = true;
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // AddNewProcessForm
+            // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -102,7 +103,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pathButton);
             this.Controls.Add(this.pathBox);
-            this.Name = "AddNewProcessForm";
+            this.Name = "Form4";
             this.Text = "Form4";
             this.Load += new System.EventHandler(this.AddNewProcessForm_Load);
             this.ResumeLayout(false);

@@ -38,11 +38,6 @@ namespace ProcesyTest
 
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void deleteButton_Click(object sender, EventArgs e)
         {
             foreach (var item in listBox1.SelectedItems)
@@ -52,6 +47,7 @@ namespace ProcesyTest
             RefreshProcessesListBox();
         }
 
+        //new form where you can add processes
         private void addButton_Click(object sender, EventArgs e)
         {
             Form4 form = new Form4();
@@ -60,6 +56,20 @@ namespace ProcesyTest
             {
                 watcher.LoadProcessName(form.processName);
                 RefreshProcessesListBox();
+                watcher.SaveSetttings();
+            }
+        }
+
+        //new form where you can choose currently working processes to add
+        private void scanButton_Click(object sender, EventArgs e)
+        {
+            Form5 form = new Form5();
+            var result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                watcher.LoadProcessName(form.processesNames.ToArray());
+                RefreshProcessesListBox();
+                watcher.SaveSetttings();
             }
         }
 

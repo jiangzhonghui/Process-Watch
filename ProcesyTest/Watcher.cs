@@ -83,8 +83,8 @@ namespace ProcesyTest
 
         public void LoadProcessName(string name)
         {
-            //jesli jeszcze nie dodano takiego procesu
-            if (!processes.ContainsKey(name))
+            //jesli jeszcze nie dodano takiego procesu lub nazwa jest niepoprawna
+            if (!processes.ContainsKey(name) && !string.IsNullOrWhiteSpace(name))
             {
                 ListView.Invoke(myDelegateListViewUse, name);
             }
@@ -97,7 +97,7 @@ namespace ProcesyTest
             listViewProcesses.Remove(name);
         }
 
-        public void LoadProcessesNames(string[] names)
+        public void LoadProcessName(string[] names)
         {
             foreach (string name in names)
             {
