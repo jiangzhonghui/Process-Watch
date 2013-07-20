@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 
+
 namespace ProcesyTest
 {
     public partial class Form5 : Form
@@ -21,8 +22,15 @@ namespace ProcesyTest
             
             foreach (Process process in processes)
             {
-                checkedListBox1.Items.Add(process.ProcessName);
+                //if(process.StartInfo.UserName == "cypisek")
+                //checkedListBox1.Items.Add(process.ProcessName);
+                checkedListBox1.Items.Add(process.StartInfo.WorkingDirectory.ToString());
             }
+        }
+
+        void AnotherScan()
+        {
+            
         }
 
         public Form5()

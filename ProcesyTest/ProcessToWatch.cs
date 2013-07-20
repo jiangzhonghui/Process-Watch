@@ -200,10 +200,9 @@ namespace ProcesyTest
                 {                   
                     //wczytujemy do kolekcji
                     processHistory = (List<ProcessHistoryDetail>)historySerializer.Deserialize(read);
-                    //read.Close(); //using zamyka
                 }
             }
-            catch
+            catch(FileNotFoundException)
             {
                 //plik nie istnieje
                 //tworzymy nowa kolekcje
@@ -228,7 +227,7 @@ namespace ProcesyTest
                     historySerializer.Serialize(write, processHistory);
                 }
             }
-            catch
+            catch(IOException)
             {
 
             }

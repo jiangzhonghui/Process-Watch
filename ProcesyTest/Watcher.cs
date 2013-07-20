@@ -109,22 +109,11 @@ namespace ProcesyTest
 
         public void Update()
         {
-            try
+            foreach (ProcessToWatch process in Processes)
             {
-                foreach (var process in processes)
-                {
-                    process.Value.Scan();
-                    ListView.Invoke(myDelegateUpdateListView, process.Value);
-                }
+                process.Scan();
+                ListView.Invoke(myDelegateUpdateListView, process);
             }
-            catch
-            {
-                /*
-                 * lapiemy wyjatek, ktory jest wyrzucany w momencie gdy
-                 * dodajemy nowy proces podczas obiegu petli
-                 * */
-            }
-            
         }
 
         void UpdateListViewMethod(ProcessToWatch process)
@@ -249,7 +238,7 @@ namespace ProcesyTest
                     xml.Serialize(write, processes.Values.ToList());
                 }
             }
-            catch
+            catch(IOException)
             {
 
             }
@@ -271,7 +260,7 @@ namespace ProcesyTest
                     }
                 }
             }
-            catch
+            catch(IOException)
             {
 
             }

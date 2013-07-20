@@ -36,7 +36,7 @@ namespace ProcesyTest
             while (true)
             {
                 watcher.Update();
-                System.Threading.Thread.Sleep(500);
+                System.Threading.Thread.Sleep(200);
             }
         }
 
