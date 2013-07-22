@@ -42,7 +42,14 @@ namespace ProcesyTest
         {
             foreach (var item in listBox1.SelectedItems)
             {
-                watcher.DeleteProcessName(item.ToString());
+                try
+                {
+                    watcher.DeleteProcessName(item.ToString());
+                }
+                catch (KeyNotFoundException)
+                {
+
+                }
             }
             RefreshProcessesListBox();
         }
@@ -71,6 +78,21 @@ namespace ProcesyTest
                 RefreshProcessesListBox();
                 watcher.SaveSetttings();
             }
+        }
+
+        private void listBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            //RefreshProcessesListBox();
+        }
+
+        private void listBox1_Click(object sender, EventArgs e)
+        {
+          //  RefreshProcessesListBox();
+        }
+
+        private void listBox1_MouseCaptureChanged(object sender, EventArgs e)
+        {
+            RefreshProcessesListBox();
         }
 
     }

@@ -103,7 +103,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pathButton);
             this.Controls.Add(this.pathBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form4";
+            this.ShowIcon = false;
             this.Text = "Form4";
             this.Load += new System.EventHandler(this.AddNewProcessForm_Load);
             this.ResumeLayout(false);

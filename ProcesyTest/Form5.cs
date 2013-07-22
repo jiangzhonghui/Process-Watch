@@ -23,8 +23,8 @@ namespace ProcesyTest
             foreach (Process process in processes)
             {
                 //if(process.StartInfo.UserName == "cypisek")
-                //checkedListBox1.Items.Add(process.ProcessName);
-                checkedListBox1.Items.Add(process.StartInfo.WorkingDirectory.ToString());
+                checkedListBox1.Items.Add(process.ProcessName);
+               // checkedListBox1.Items.Add(process.StartInfo.WorkingDirectory.ToString());
             }
         }
 

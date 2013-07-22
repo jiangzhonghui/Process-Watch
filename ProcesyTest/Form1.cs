@@ -28,7 +28,14 @@ namespace ProcesyTest
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+            if (listView1.SelectedItems.Count > 0)
+            {
+                processToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                processToolStripMenuItem.Enabled = false;
+            }
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -47,40 +54,22 @@ namespace ProcesyTest
 
         delegate void AddNewProcess(string name);
 
-        ////dodanie nowego procesu
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    if (processTextBox.Text.Length > 0)
-        //    {
-        //        AddNewProcessMethod(processTextBox.Text);                              
-        //        processTextBox.Text = String.Empty;
-        //    }
-        //}
-
-        //private void button2_Click(object sender, EventArgs e)
-        //{
-        //    //czy nazwa ktoregos procesu zostala wybrana
-        //    if (listView1.SelectedIndices.Count > 0)
-        //    {
-        //        watcher.DeleteProcessName(listView1.SelectedItems[0].Text);
-        //    }
-        //    processTextBox.Text = String.Empty;
-        //}
-
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Form detailForm = new Form2(watcher.GetProcessByName(listView1.SelectedItems[0].Text));
             detailForm.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Form3 form = new Form3(watcher);
-            form.ShowDialog();
-        }
-
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+    //        if (e.Error != null)
+    //        {
+    //            Exception ex = e.Error;
+    //MessageBox.Show("pizda Whoops! Please contact the developers with the following" 
+    //      + " information:\n\n" + ex.Message + ex.StackTrace, 
+    //      "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+  
+    //        }
         }
 
         private void Procesy_FormClosing(object sender, FormClosingEventArgs e)
@@ -94,10 +83,71 @@ namespace ProcesyTest
 
         }
 
-        private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
+        private void UnhideToTray()
         {
-            
+            notifyIcon1.Visible = false;
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
         }
+
+        private void HideToTray()
+        {
+                notifyIcon1.Visible = true;
+                this.Hide();
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            UnhideToTray();
+        }
+
+        private void ProcesyForm_Resize(object sender, EventArgs e)
+        {
+            if(WindowState == FormWindowState.Minimized)
+                HideToTray();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void asdToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UnhideToTray();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void processToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                Form detailForm = new Form2(watcher.GetProcessByName(listView1.SelectedItems[0].Text));
+                detailForm.Show();
+            }
+        }
+
+        private void processManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form3 form = new Form3(watcher);
+            form.ShowDialog();
+        }
+
+        private void showToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void hideToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HideToTray();
+        }
+
+
 
     }
 }

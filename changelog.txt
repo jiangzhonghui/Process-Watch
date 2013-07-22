@@ -3,3 +3,9 @@ show info about actual state
 double click to check process history (new form)
 remember processes names (xml)
 remember processes history (xml)
+
+changes in gui
+minimalize to tray
+
+to fix:
+delete sometimes throws exception (key not found)

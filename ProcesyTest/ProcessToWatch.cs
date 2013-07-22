@@ -236,9 +236,17 @@ namespace ProcesyTest
 
         void SetProcessToObserve(Process process)
         {
-            observedProcess = process;
-            observedProcess.EnableRaisingEvents = true;
-            observedProcess.Exited += ProcessToWatch_Exited;
+            try
+            {
+                observedProcess = process;
+                observedProcess.EnableRaisingEvents = true;
+                observedProcess.Exited += ProcessToWatch_Exited;
+            }
+            catch(System.ComponentModel.Win32Exception e)
+            {
+                MessageBox.Show(e.Message + "\nRun as Administrator", e.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                throw;
+            }
         }
 
         public bool Scan()

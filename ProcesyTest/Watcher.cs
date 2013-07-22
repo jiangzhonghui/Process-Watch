@@ -68,6 +68,7 @@ namespace ProcesyTest
         {
             processes.Add(name, new ProcessToWatch(name));
             AddToListView(name);
+         //   processes[name].Scan();
         }
 
         void AddToListView(string name)
@@ -111,8 +112,17 @@ namespace ProcesyTest
         {
             foreach (ProcessToWatch process in Processes)
             {
-                process.Scan();
-                ListView.Invoke(myDelegateUpdateListView, process);
+                try
+                {
+                    process.Scan();
+                    if(ListView.InvokeRequired)
+                        ListView.Invoke(myDelegateUpdateListView, process);
+                }
+                catch (System.ComponentModel.Win32Exception e)
+                {
+                    if(ListView.InvokeRequired)
+                        ListView.Invoke(new ListViewUse(DeleteProcessName), process.ProcessName);
+                }                
             }
         }
 
@@ -129,7 +139,11 @@ namespace ProcesyTest
              *   
              * */
             
-            ListViewItem lv = listViewProcesses[process.ProcessName];
+            ListViewItem lv;// = listViewProcesses[process.ProcessName];
+            if (listViewProcesses.TryGetValue(process.ProcessName, out lv) == false)
+            {
+                MessageBox.Show("error value");
+            }
 
             //on
             if (process.Status == ProcessToWatch.ProcessStatus.on)
