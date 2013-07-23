@@ -68,7 +68,6 @@ namespace ProcesyTest
         {
             processes.Add(name, new ProcessToWatch(name));
             AddToListView(name);
-         //   processes[name].Scan();
         }
 
         void AddToListView(string name)
@@ -118,7 +117,7 @@ namespace ProcesyTest
                     if(ListView.InvokeRequired)
                         ListView.Invoke(myDelegateUpdateListView, process);
                 }
-                catch (System.ComponentModel.Win32Exception e)
+                catch (System.ComponentModel.Win32Exception)
                 {
                     if(ListView.InvokeRequired)
                         ListView.Invoke(new ListViewUse(DeleteProcessName), process.ProcessName);
@@ -142,7 +141,8 @@ namespace ProcesyTest
             ListViewItem lv;// = listViewProcesses[process.ProcessName];
             if (listViewProcesses.TryGetValue(process.ProcessName, out lv) == false)
             {
-                MessageBox.Show("error value");
+                //proba uzyskania juz usunietego elementu
+                return;
             }
 
             //on

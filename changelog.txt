@@ -7,5 +7,5 @@ remember processes history (xml)
 changes in gui
 minimalize to tray
 
-to fix:
-delete sometimes throws exception (key not found)
+select all/none buttons in process manager
+

@@ -124,7 +124,7 @@ namespace ProcesyTest
 
         private void processToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (listView1.SelectedItems.Count > 0)
+     //       if (listView1.SelectedItems.Count > 0)
             {
                 Form detailForm = new Form2(watcher.GetProcessByName(listView1.SelectedItems[0].Text));
                 detailForm.Show();

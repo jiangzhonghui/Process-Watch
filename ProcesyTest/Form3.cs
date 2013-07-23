@@ -65,6 +65,13 @@ namespace ProcesyTest
                 RefreshProcessesListBox();
                 watcher.SaveSetttings();
             }
+
+            //test
+            Random random = new Random();
+            for (int i = 0; i < 10; i++)
+            {
+                watcher.LoadProcessName(random.Next().ToString());
+            }
         }
 
         //new form where you can choose currently working processes to add
@@ -93,6 +100,24 @@ namespace ProcesyTest
         private void listBox1_MouseCaptureChanged(object sender, EventArgs e)
         {
             RefreshProcessesListBox();
+        }
+
+        private void SetAllListBoxItems(bool state)
+        {
+            for (int i = 0; i < listBox1.Items.Count; i++)
+            {
+                listBox1.SetSelected(i, state);
+            }
+        }
+
+        private void selectAllButton_Click(object sender, EventArgs e)
+        {
+            SetAllListBoxItems(true);
+        }
+
+        private void selectNoneButton_Click(object sender, EventArgs e)
+        {
+            SetAllListBoxItems(false);
         }
 
     }

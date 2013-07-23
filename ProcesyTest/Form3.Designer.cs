@@ -32,6 +32,8 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.scanButton = new System.Windows.Forms.Button();
+            this.selectAllButton = new System.Windows.Forms.Button();
+            this.selectNoneButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox1
@@ -73,11 +75,33 @@
             this.scanButton.UseVisualStyleBackColor = true;
             this.scanButton.Click += new System.EventHandler(this.scanButton_Click);
             // 
+            // selectAllButton
+            // 
+            this.selectAllButton.Location = new System.Drawing.Point(12, 306);
+            this.selectAllButton.Name = "selectAllButton";
+            this.selectAllButton.Size = new System.Drawing.Size(41, 22);
+            this.selectAllButton.TabIndex = 4;
+            this.selectAllButton.Text = "all";
+            this.selectAllButton.UseVisualStyleBackColor = true;
+            this.selectAllButton.Click += new System.EventHandler(this.selectAllButton_Click);
+            // 
+            // selectNoneButton
+            // 
+            this.selectNoneButton.Location = new System.Drawing.Point(59, 306);
+            this.selectNoneButton.Name = "selectNoneButton";
+            this.selectNoneButton.Size = new System.Drawing.Size(41, 22);
+            this.selectNoneButton.TabIndex = 5;
+            this.selectNoneButton.Text = "none";
+            this.selectNoneButton.UseVisualStyleBackColor = true;
+            this.selectNoneButton.Click += new System.EventHandler(this.selectNoneButton_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 312);
+            this.ClientSize = new System.Drawing.Size(284, 333);
+            this.Controls.Add(this.selectNoneButton);
+            this.Controls.Add(this.selectAllButton);
             this.Controls.Add(this.scanButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.deleteButton);
@@ -99,6 +123,8 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button scanButton;
+        private System.Windows.Forms.Button selectAllButton;
+        private System.Windows.Forms.Button selectNoneButton;
 
     }
 }
