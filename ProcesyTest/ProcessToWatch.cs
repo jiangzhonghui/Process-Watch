@@ -154,11 +154,18 @@ namespace ProcesyTest
         [XmlIgnore]
         XmlSerializer historySerializer;
 
+        [XmlIgnore]
+        private const string folder = "history";
+
+        [XmlIgnore]
+        private const string extension = ".xml";
+
+
         public ProcessToWatch() 
         {
             this.historySerializer = new XmlSerializer(typeof(List<ProcessHistoryDetail>));
             this.actualTimeDetail = new ProcessHistoryDetail();
-            this.ProcessName = "default name";
+           // this.ProcessName = "default name";
             Status = ProcessStatus.off;
             FirstCheck = true;
             watch = true;
@@ -194,18 +201,30 @@ namespace ProcesyTest
         {
             //zaladowanie istniejacej historii
             //sprawdzamy istnienie pliku
+
+            //if(processName == 
+
+            string filename = processName + extension;
+
             try
             {
-                using (StreamReader read = new StreamReader(processName + ".xml"))
-                {                   
+                using (StreamReader read = new StreamReader(Path.Combine(folder, filename)))
+                {
                     //wczytujemy do kolekcji
                     processHistory = (List<ProcessHistoryDetail>)historySerializer.Deserialize(read);
                 }
             }
-            catch(FileNotFoundException)
+            catch (FileNotFoundException)
             {
                 //plik nie istnieje
                 //tworzymy nowa kolekcje
+                processHistory = new List<ProcessHistoryDetail>();
+            }
+            catch (DirectoryNotFoundException)
+            {
+                NLog.LogManager.GetCurrentClassLogger().Warn(String.Format("Folder {0} does not exist", folder));
+                Directory.CreateDirectory(folder);
+                NLog.LogManager.GetCurrentClassLogger().Info(String.Format("Create folder {0}", folder));
                 processHistory = new List<ProcessHistoryDetail>();
             }
         }
@@ -222,14 +241,14 @@ namespace ProcesyTest
 
             try
             {
-                using (StreamWriter write = new StreamWriter(processName + ".xml"))
+                using (StreamWriter write = new StreamWriter(Path.Combine(folder, processName + extension)))
                 {
                     historySerializer.Serialize(write, processHistory);
                 }
             }
-            catch(IOException)
+            catch(IOException e)
             {
-
+                NLog.LogManager.GetCurrentClassLogger().Error(e.Message);
             }
 
         }
@@ -244,6 +263,7 @@ namespace ProcesyTest
             }
             catch(System.ComponentModel.Win32Exception e)
             {
+                NLog.LogManager.GetCurrentClassLogger().Error(String.Format("{0}: {1}", processName, e.Message));
                 MessageBox.Show(e.Message + "\nRun as Administrator", e.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 throw;
             }

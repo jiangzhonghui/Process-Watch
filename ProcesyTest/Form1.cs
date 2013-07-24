@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using NLog;
 
 namespace ProcesyTest
 {
@@ -62,14 +63,10 @@ namespace ProcesyTest
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-    //        if (e.Error != null)
-    //        {
-    //            Exception ex = e.Error;
-    //MessageBox.Show("pizda Whoops! Please contact the developers with the following" 
-    //      + " information:\n\n" + ex.Message + ex.StackTrace, 
-    //      "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-  
-    //        }
+            if (e.Error != null)
+            {
+                LogManager.GetCurrentClassLogger().Error(e.Error.Message);
+            }
         }
 
         private void Procesy_FormClosing(object sender, FormClosingEventArgs e)
@@ -92,8 +89,8 @@ namespace ProcesyTest
 
         private void HideToTray()
         {
-                notifyIcon1.Visible = true;
-                this.Hide();
+            notifyIcon1.Visible = true;
+            this.Hide();
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)

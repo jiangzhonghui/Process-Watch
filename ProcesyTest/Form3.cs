@@ -67,11 +67,11 @@ namespace ProcesyTest
             }
 
             //test
-            Random random = new Random();
-            for (int i = 0; i < 10; i++)
-            {
-                watcher.LoadProcessName(random.Next().ToString());
-            }
+            //Random random = new Random();
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    watcher.LoadProcessName(random.Next().ToString());
+            //}
         }
 
         //new form where you can choose currently working processes to add
@@ -85,16 +85,6 @@ namespace ProcesyTest
                 RefreshProcessesListBox();
                 watcher.SaveSetttings();
             }
-        }
-
-        private void listBox1_MouseClick(object sender, MouseEventArgs e)
-        {
-            //RefreshProcessesListBox();
-        }
-
-        private void listBox1_Click(object sender, EventArgs e)
-        {
-          //  RefreshProcessesListBox();
         }
 
         private void listBox1_MouseCaptureChanged(object sender, EventArgs e)

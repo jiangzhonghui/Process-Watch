@@ -18,7 +18,7 @@ namespace ProcesyTest
 
         delegate void ListViewUse(string name);
 
-        ListViewUse myDelegateListViewUse;
+        ListViewUse myDelegateAddNewProcess;
 
         public Dictionary<string, ListViewItem> listViewProcesses
         {
@@ -51,12 +51,14 @@ namespace ProcesyTest
             }
         }
 
+        private const string listFilename = "list.xml";
+
         public Watcher()
         {
             this.listViewProcesses = new Dictionary<string, ListViewItem>();
             this.processes = new Dictionary<string, ProcessToWatch>();
             this.myDelegateUpdateListView = new UpdateListView(UpdateListViewMethod);
-            this.myDelegateListViewUse = new ListViewUse(ListViewUseMethod);
+            this.myDelegateAddNewProcess = new ListViewUse(AddNewProcessMethod);
         }
 
         public ProcessToWatch GetProcessByName(string name)
@@ -64,10 +66,11 @@ namespace ProcesyTest
                 return processes[name];
         }
               
-        void ListViewUseMethod(string name)
+        void AddNewProcessMethod(string name)
         {
             processes.Add(name, new ProcessToWatch(name));
             AddToListView(name);
+            NLog.LogManager.GetCurrentClassLogger().Info("Add process: {0}", name);
         }
 
         void AddToListView(string name)
@@ -86,7 +89,7 @@ namespace ProcesyTest
             //jesli jeszcze nie dodano takiego procesu lub nazwa jest niepoprawna
             if (!processes.ContainsKey(name) && !string.IsNullOrWhiteSpace(name))
             {
-                ListView.Invoke(myDelegateListViewUse, name);
+                ListView.Invoke(myDelegateAddNewProcess, name);
             }
         }
 
@@ -95,6 +98,7 @@ namespace ProcesyTest
             processes.Remove(name);
             ListView.Items.Remove(listViewProcesses[name]);
             listViewProcesses.Remove(name);
+            NLog.LogManager.GetCurrentClassLogger().Info("Remove process: {0}", name);
         }
 
         public void LoadProcessName(string[] names)
@@ -121,7 +125,7 @@ namespace ProcesyTest
                 {
                     if(ListView.InvokeRequired)
                         ListView.Invoke(new ListViewUse(DeleteProcessName), process.ProcessName);
-                }                
+                }     
             }
         }
 
@@ -246,15 +250,16 @@ namespace ProcesyTest
         {
             try
             {
-                using (StreamWriter write = new StreamWriter("settings.xml"))
+                using (StreamWriter write = new StreamWriter(listFilename))
                 {
+                    
                     XmlSerializer xml = new XmlSerializer(typeof(List<ProcessToWatch>));
                     xml.Serialize(write, processes.Values.ToList());
                 }
             }
-            catch(IOException)
+            catch(IOException e)
             {
-
+                NLog.LogManager.GetCurrentClassLogger().Error(e.Message);
             }
         }
 
@@ -262,7 +267,7 @@ namespace ProcesyTest
         {
             try
             {
-                using (StreamReader read = new StreamReader("settings.xml"))
+                using (StreamReader read = new StreamReader(listFilename))
                 {
                     XmlSerializer xml = new XmlSerializer(typeof(List<ProcessToWatch>));
                     List<ProcessToWatch> tempList = (List<ProcessToWatch>)xml.Deserialize(read);
@@ -274,9 +279,9 @@ namespace ProcesyTest
                     }
                 }
             }
-            catch(IOException)
+            catch(IOException e)
             {
-
+                NLog.LogManager.GetCurrentClassLogger().Error(e.Message);
             }
 
         }
