@@ -24,7 +24,7 @@ namespace ProcesyTest
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            LogManager.GetCurrentClassLogger().Info("Started");   
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -71,13 +71,23 @@ namespace ProcesyTest
 
         private void Procesy_FormClosing(object sender, FormClosingEventArgs e)
         {
-            watcher.SaveProcessesHistory();
-            watcher.SaveSetttings();
+            string name = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+            switch (MessageBox.Show(String.Format("Are you sure you want to exit {0}?", name), name, MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            {
+                case System.Windows.Forms.DialogResult.Yes:
+                    break;
+                    
+                case System.Windows.Forms.DialogResult.No:
+                    e.Cancel = true;
+                    break;
+            }
         }
 
         private void Procesy_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            watcher.SaveProcessesHistory();
+            watcher.SaveSetttings();
+            NLog.LogManager.GetCurrentClassLogger().Info("Closed");
         }
 
         private void UnhideToTray()
@@ -144,7 +154,6 @@ namespace ProcesyTest
             HideToTray();
         }
 
-
-
+        
     }
 }
