@@ -155,7 +155,7 @@ namespace ProcesyTest
         XmlSerializer historySerializer;
 
         [XmlIgnore]
-        private const string folder = "history";
+        private static readonly string folder;
 
         [XmlIgnore]
         private const string extension = ".xml";
@@ -165,10 +165,16 @@ namespace ProcesyTest
         {
             this.historySerializer = new XmlSerializer(typeof(List<ProcessHistoryDetail>));
             this.actualTimeDetail = new ProcessHistoryDetail();
-           // this.ProcessName = "default name";
             Status = ProcessStatus.off;
             FirstCheck = true;
             watch = true;
+        }
+
+        static ProcessToWatch()
+        {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string programName = Path.GetFileNameWithoutExtension(System.AppDomain.CurrentDomain.FriendlyName);
+            folder = Path.Combine(path, programName, "history"); 
         }
 
         public ProcessToWatch(string processName) : this()
@@ -201,9 +207,7 @@ namespace ProcesyTest
         {
             //zaladowanie istniejacej historii
             //sprawdzamy istnienie pliku
-
-            //if(processName == 
-
+            
             string filename = processName + extension;
 
             try
