@@ -51,7 +51,7 @@ namespace ProcesyTest
             }
         }
 
-        private const string listFilename = "list.xml";
+        private static readonly string listFilename;// = "list.xml";
 
         public Watcher()
         {
@@ -59,6 +59,14 @@ namespace ProcesyTest
             this.processes = new Dictionary<string, ProcessToWatch>();
             this.myDelegateUpdateListView = new UpdateListView(UpdateListViewMethod);
             this.myDelegateAddNewProcess = new ListViewUse(AddNewProcessMethod);
+        }
+
+        static Watcher()
+        {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string programName = Path.GetFileNameWithoutExtension(System.AppDomain.CurrentDomain.FriendlyName);
+            //folder = Path.Combine(path, programName); 
+            listFilename = Path.Combine(path, programName, "list.xml");
         }
 
         public ProcessToWatch GetProcessByName(string name)

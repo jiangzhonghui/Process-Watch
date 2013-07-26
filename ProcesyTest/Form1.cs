@@ -22,9 +22,52 @@ namespace ProcesyTest
             backgroundWorker1.RunWorkerAsync();
         }
 
+        private void UnhideToTray()
+        {            
+            this.ShowInTaskbar = true;
+            this.Visible = true;
+            this.WindowState = FormWindowState.Normal;
+            notifyIcon1.Visible = false;
+        }
+
+        private void HideToTray()
+        {
+            this.ShowInTaskbar = false;
+            notifyIcon1.Visible = true;
+            this.Visible = false;
+        }
+
+        bool formShownOnce;
+
+        protected override void SetVisibleCore(bool value)
+        {
+            if (!formShownOnce)
+            {
+                if (Properties.Settings.Default.startInTray)
+                {
+                    value = false;
+                    notifyIcon1.Visible = true;
+                }
+                else
+                    value = true;
+
+                formShownOnce = true;
+            }
+
+            base.SetVisibleCore(value);
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            LogManager.GetCurrentClassLogger().Info("Started");   
+            LogManager.GetCurrentClassLogger().Info("Started");
+            if (Properties.Settings.Default.startInTray == false)
+            {
+                UnhideToTray();
+            }
+            else
+            {
+                HideToTray();
+            }
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -71,15 +114,18 @@ namespace ProcesyTest
 
         private void Procesy_FormClosing(object sender, FormClosingEventArgs e)
         {
-            string name = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
-            switch (MessageBox.Show(String.Format("Are you sure you want to exit {0}?", name), name, MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            if (Properties.Settings.Default.askExit)
             {
-                case System.Windows.Forms.DialogResult.Yes:
-                    break;
-                    
-                case System.Windows.Forms.DialogResult.No:
-                    e.Cancel = true;
-                    break;
+                string name = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+                switch (MessageBox.Show(String.Format("Are you sure you want to exit {0}?", name), name, MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                {
+                    case System.Windows.Forms.DialogResult.Yes:
+                        break;
+
+                    case System.Windows.Forms.DialogResult.No:
+                        e.Cancel = true;
+                        break;
+                }
             }
         }
 
@@ -88,19 +134,6 @@ namespace ProcesyTest
             watcher.SaveProcessesHistory();
             watcher.SaveSetttings();
             NLog.LogManager.GetCurrentClassLogger().Info("Closed");
-        }
-
-        private void UnhideToTray()
-        {
-            notifyIcon1.Visible = false;
-            this.Show();
-            this.WindowState = FormWindowState.Normal;
-        }
-
-        private void HideToTray()
-        {
-            notifyIcon1.Visible = true;
-            this.Hide();
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -152,6 +185,16 @@ namespace ProcesyTest
         private void hideToolStripMenuItem_Click(object sender, EventArgs e)
         {
             HideToTray();
+        }
+
+        private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form6 form = new Form6();
+            form.ShowDialog();
+        }
+
+        private void ProcesyForm_Shown(object sender, EventArgs e)
+        {
         }
 
         
