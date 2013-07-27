@@ -24,47 +24,47 @@ namespace ProcesyTest
 
         private void UnhideToTray()
         {            
-            this.ShowInTaskbar = true;
             this.Visible = true;
-            this.WindowState = FormWindowState.Normal;
+            this.ShowInTaskbar = true;
             notifyIcon1.Visible = false;
+            this.WindowState = FormWindowState.Normal;            
         }
 
         private void HideToTray()
         {
-            this.ShowInTaskbar = false;
+            this.WindowState = FormWindowState.Minimized;
             notifyIcon1.Visible = true;
+            this.ShowInTaskbar = false;
             this.Visible = false;
         }
 
-        bool formShownOnce;
+        //bool formShownOnce = false;
 
-        protected override void SetVisibleCore(bool value)
-        {
-            if (!formShownOnce)
-            {
-                if (Properties.Settings.Default.startInTray)
-                {
-                    value = false;
-                    notifyIcon1.Visible = true;
-                }
-                else
-                    value = true;
+        //protected override void SetVisibleCore(bool value)
+        //{
+        //    if (!formShownOnce)
+        //    {
+        //        if (Properties.Settings.Default.startInTray)
+        //        {
+        //            value = false;
+        //            notifyIcon1.Visible = true;
+        //            //this.WindowState = FormWindowState.Minimized;
+        //        }
+        //        else
+        //        {
+        //            value = true;
+        //        }
 
-                formShownOnce = true;
-            }
+        //        formShownOnce = true;
+        //    }
 
-            base.SetVisibleCore(value);
-        }
+        //    base.SetVisibleCore(value);
+        //}
 
         private void Form1_Load(object sender, EventArgs e)
         {
             LogManager.GetCurrentClassLogger().Info("Started");
-            if (Properties.Settings.Default.startInTray == false)
-            {
-                UnhideToTray();
-            }
-            else
+            if (Properties.Settings.Default.startInTray)
             {
                 HideToTray();
             }
@@ -164,11 +164,8 @@ namespace ProcesyTest
 
         private void processToolStripMenuItem_Click(object sender, EventArgs e)
         {
-     //       if (listView1.SelectedItems.Count > 0)
-            {
                 Form detailForm = new Form2(watcher.GetProcessByName(listView1.SelectedItems[0].Text));
                 detailForm.Show();
-            }
         }
 
         private void processManagerToolStripMenuItem_Click(object sender, EventArgs e)
