@@ -63,6 +63,7 @@ namespace ProcesyTest
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
             LogManager.GetCurrentClassLogger().Info("Started");
             if (Properties.Settings.Default.StartInTray)
             {

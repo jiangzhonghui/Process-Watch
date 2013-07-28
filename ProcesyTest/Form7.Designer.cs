@@ -94,6 +94,7 @@
             // 
             // createButton
             // 
+            this.createButton.Enabled = false;
             this.createButton.Location = new System.Drawing.Point(12, 261);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(363, 47);
@@ -157,7 +158,7 @@
             this.pathLabel.AutoSize = true;
             this.pathLabel.Location = new System.Drawing.Point(17, 311);
             this.pathLabel.Name = "pathLabel";
-            this.pathLabel.Size = new System.Drawing.Size(35, 13);
+            this.pathLabel.Size = new System.Drawing.Size(28, 13);
             this.pathLabel.TabIndex = 11;
             this.pathLabel.Text = "path";
             // 

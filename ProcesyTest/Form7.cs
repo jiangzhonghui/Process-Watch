@@ -69,16 +69,36 @@ namespace ProcesyTest
         {
             foreach (var item in checkedListBox1.CheckedItems)
             {
-                if(!checkedListBox2.Items.Contains(item))
+                if (!checkedListBox2.Items.Contains(item))
+                {
                     checkedListBox2.Items.Add(item);
+                }
+            }
+
+            SetAllListBoxItems(checkedListBox1, false);
+
+            if (checkedListBox2.Items.Count > 0)
+            {
+                createButton.Enabled = true;
+            }
+        }
+
+        private void ClearCheckedListBox(CheckedListBox list)
+        {
+            while (list.CheckedItems.Count > 0)
+            {
+                list.Items.Remove(checkedListBox2.CheckedItems[0]);
             }
         }
 
         private void removeButton_Click(object sender, EventArgs e)
         {
-            while (checkedListBox2.CheckedItems.Count > 0)
+
+            ClearCheckedListBox(checkedListBox2);
+
+            if (checkedListBox2.Items.Count < 1)
             {
-                checkedListBox2.Items.Remove(checkedListBox2.CheckedItems[0]);
+                createButton.Enabled = false;
             }
         }
 
@@ -184,6 +204,14 @@ namespace ProcesyTest
             {
                 report.Create();
             }
+
+            createButton.Enabled = false;
+
+            while (checkedListBox2.Items.Count > 0)
+            {
+                checkedListBox2.Items.RemoveAt(0);
+            }
+
         }
 
         private void pathButton_Click(object sender, EventArgs e)

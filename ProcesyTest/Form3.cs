@@ -40,6 +40,22 @@ namespace ProcesyTest
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.AskDelete)
+            {
+                if (Properties.Settings.Default.AskExit)
+                {
+                    string name = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+                    switch (MessageBox.Show(String.Format("Are you sure you want to exit {0}?", name), name, MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                    {
+                        case System.Windows.Forms.DialogResult.Yes:
+                            break;
+
+                        case System.Windows.Forms.DialogResult.No:
+                            return;
+                    }
+                }
+            }
+
             foreach (var item in listBox1.SelectedItems)
             {
                 try
@@ -108,6 +124,18 @@ namespace ProcesyTest
         private void selectNoneButton_Click(object sender, EventArgs e)
         {
             SetAllListBoxItems(false);
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItems.Count > 0)
+            {
+                deleteButton.Enabled = true;
+            }
+            else
+            {
+                deleteButton.Enabled = false;
+            }
         }
 
     }

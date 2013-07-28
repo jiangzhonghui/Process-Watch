@@ -247,7 +247,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(6, 28);
             this.Name = "ProcesyForm";
-            this.Text = "Microsoft.VisualStudio.Shell.Design";
+            this.Text = "Process Watcher";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Procesy_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Procesy_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
