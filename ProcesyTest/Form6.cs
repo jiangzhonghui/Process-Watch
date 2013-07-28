@@ -28,18 +28,18 @@ namespace ProcesyTest
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.askDelete = askDeleteCheckBox.Checked;
-            Properties.Settings.Default.askExit = askExitCheckBox.Checked;
-            Properties.Settings.Default.startInTray = startTrayCheckBox.Checked;
+            Properties.Settings.Default.AskDelete = askDeleteCheckBox.Checked;
+            Properties.Settings.Default.AskExit = askExitCheckBox.Checked;
+            Properties.Settings.Default.StartInTray = startTrayCheckBox.Checked;
             Properties.Settings.Default.Save();
             this.Close();
         }
 
         private void loadSettings()
         {
-            askDeleteCheckBox.Checked = Properties.Settings.Default.askDelete;
-            askExitCheckBox.Checked = Properties.Settings.Default.askExit;
-            startTrayCheckBox.Checked = Properties.Settings.Default.startInTray;
+            askDeleteCheckBox.Checked = Properties.Settings.Default.AskDelete;
+            askExitCheckBox.Checked = Properties.Settings.Default.AskExit;
+            startTrayCheckBox.Checked = Properties.Settings.Default.StartInTray;
         }
 
         private void closeCheckBox_CheckedChanged(object sender, EventArgs e)

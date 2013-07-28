@@ -26,36 +26,84 @@ namespace ProcesyTest.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool startInTray {
+        public bool StartInTray {
             get {
-                return ((bool)(this["startInTray"]));
+                return ((bool)(this["StartInTray"]));
             }
             set {
-                this["startInTray"] = value;
+                this["StartInTray"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool askExit {
+        public bool AskExit {
             get {
-                return ((bool)(this["askExit"]));
+                return ((bool)(this["AskExit"]));
             }
             set {
-                this["askExit"] = value;
+                this["AskExit"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool askDelete {
+        public bool AskDelete {
             get {
-                return ((bool)(this["askDelete"]));
+                return ((bool)(this["AskDelete"]));
             }
             set {
-                this["askDelete"] = value;
+                this["AskDelete"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ReportPath {
+            get {
+                return ((string)(this["ReportPath"]));
+            }
+            set {
+                this["ReportPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string FromTime {
+            get {
+                return ((string)(this["FromTime"]));
+            }
+            set {
+                this["FromTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ToTime {
+            get {
+                return ((string)(this["ToTime"]));
+            }
+            set {
+                this["ToTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ReportIndex {
+            get {
+                return ((int)(this["ReportIndex"]));
+            }
+            set {
+                this["ReportIndex"] = value;
             }
         }
     }

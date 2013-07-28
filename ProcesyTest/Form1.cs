@@ -64,7 +64,7 @@ namespace ProcesyTest
         private void Form1_Load(object sender, EventArgs e)
         {
             LogManager.GetCurrentClassLogger().Info("Started");
-            if (Properties.Settings.Default.startInTray)
+            if (Properties.Settings.Default.StartInTray)
             {
                 HideToTray();
             }
@@ -114,7 +114,7 @@ namespace ProcesyTest
 
         private void Procesy_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Properties.Settings.Default.askExit)
+            if (Properties.Settings.Default.AskExit)
             {
                 string name = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
                 switch (MessageBox.Show(String.Format("Are you sure you want to exit {0}?", name), name, MessageBoxButtons.YesNo, MessageBoxIcon.Question))
@@ -192,6 +192,20 @@ namespace ProcesyTest
 
         private void ProcesyForm_Shown(object sender, EventArgs e)
         {
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //ReportCreator x = new ReportCreator(watcher.Processes);
+            //DateTime data = new DateTime(2010, 11, 12);
+            //DateTime datab = new DateTime(2013, 1, 1);
+            //x.Create(data, datab);
+        }
+
+        private void reportCreatorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form7 form = new Form7(watcher);
+            form.Show();
         }
 
         

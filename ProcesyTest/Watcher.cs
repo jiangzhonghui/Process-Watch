@@ -73,6 +73,16 @@ namespace ProcesyTest
         {
                 return processes[name];
         }
+
+        public List<ProcessToWatch> GetProcessesByName(string[] names)
+        {
+            List<ProcessToWatch> list = new List<ProcessToWatch>();
+            foreach (string name in names)
+            {
+                list.Add(GetProcessByName(name));
+            }
+            return list;
+        }
               
         void AddNewProcessMethod(string name)
         {

@@ -51,6 +51,7 @@
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportCreatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -140,7 +141,6 @@
             // 
             this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
             this.notifyIcon1.Icon = this.Icon;
-            this.notifyIcon1.Visible = false;
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
@@ -193,6 +193,7 @@
             // 
             this.exitToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.processManagerToolStripMenuItem,
+            this.reportCreatorToolStripMenuItem,
             this.preferencesToolStripMenuItem});
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
             this.exitToolStripMenuItem1.Size = new System.Drawing.Size(48, 20);
@@ -225,6 +226,14 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // reportCreatorToolStripMenuItem
+            // 
+            this.reportCreatorToolStripMenuItem.Name = "reportCreatorToolStripMenuItem";
+            this.reportCreatorToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.reportCreatorToolStripMenuItem.Text = "Report creator";
+            this.reportCreatorToolStripMenuItem.Click += new System.EventHandler(this.reportCreatorToolStripMenuItem_Click);
             // 
             // ProcesyForm
             // 
@@ -238,11 +247,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(6, 28);
             this.Name = "ProcesyForm";
-
-            //System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
-            this.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
-            //
-            this.WindowState = System.Windows.Forms.FormWindowState.Normal;
+            this.Text = "Microsoft.VisualStudio.Shell.Design";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Procesy_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Procesy_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -280,6 +285,7 @@
         private System.Windows.Forms.ToolStripMenuItem hideToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem processToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportCreatorToolStripMenuItem;
     }
 }
 
