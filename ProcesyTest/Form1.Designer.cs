@@ -48,10 +48,10 @@
             this.processToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.processManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportCreatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportCreatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +68,6 @@
             this.startTimeColumn,
             this.durationColumn,
             this.endTimeColumn});
-            this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView1.Location = new System.Drawing.Point(12, 40);
             this.listView1.MinimumSize = new System.Drawing.Size(260, 240);
             this.listView1.MultiSelect = false;
@@ -77,6 +76,7 @@
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView1_ColumnClick);
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             this.listView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick);
             // 
@@ -206,6 +206,13 @@
             this.processManagerToolStripMenuItem.Text = "Process manager";
             this.processManagerToolStripMenuItem.Click += new System.EventHandler(this.processManagerToolStripMenuItem_Click);
             // 
+            // reportCreatorToolStripMenuItem
+            // 
+            this.reportCreatorToolStripMenuItem.Name = "reportCreatorToolStripMenuItem";
+            this.reportCreatorToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.reportCreatorToolStripMenuItem.Text = "Report creator";
+            this.reportCreatorToolStripMenuItem.Click += new System.EventHandler(this.reportCreatorToolStripMenuItem_Click);
+            // 
             // preferencesToolStripMenuItem
             // 
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
@@ -227,13 +234,6 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // reportCreatorToolStripMenuItem
-            // 
-            this.reportCreatorToolStripMenuItem.Name = "reportCreatorToolStripMenuItem";
-            this.reportCreatorToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.reportCreatorToolStripMenuItem.Text = "Report creator";
-            this.reportCreatorToolStripMenuItem.Click += new System.EventHandler(this.reportCreatorToolStripMenuItem_Click);
             // 
             // ProcesyForm
             // 

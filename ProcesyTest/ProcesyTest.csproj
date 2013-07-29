@@ -112,6 +112,7 @@
     <Compile Include="Form8.Designer.cs">
       <DependentUpon>Form8.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListViewItemComparer.cs" />
     <Compile Include="ProcessHistoryDetail.cs" />
     <Compile Include="ReportCreator.cs" />
     <Compile Include="ReportItem.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="ProcessToWatch.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility.cs" />
     <Compile Include="Watcher.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

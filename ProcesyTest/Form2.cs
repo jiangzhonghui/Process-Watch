@@ -62,6 +62,13 @@ namespace ProcesyTest
 
         }
 
+        private int sortColumn = -1;
+
+        private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            Utility.ListViewSort(listView1, ref sortColumn, e.Column);
+        }
+
 
 
     }
