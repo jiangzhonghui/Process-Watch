@@ -39,8 +39,9 @@ namespace ProcesyTest
 
             foreach (ProcessHistoryDetail detail in historyDetailList)
             {
-                historyListViewItem.Add(new ListViewItem());
-                historyListViewItem.Last().Text = DateTimeFormatter.FormatLong(detail.Start);
+                //historyListViewItem.Add(new ListViewItem());
+                //historyListViewItem.Last().Text = DateTimeFormatter.FormatLong(detail.Start);
+                historyListViewItem.Add(new ListViewItem(DateTimeFormatter.FormatLong(detail.Start)));
                 historyListViewItem.Last().SubItems.Add(TimeSpanFormatter.Format(detail.Duration));
                 historyListViewItem.Last().SubItems.Add(DateTimeFormatter.FormatLong(detail.End));
 
@@ -67,6 +68,11 @@ namespace ProcesyTest
         private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             Utility.ListViewSort(listView1, ref sortColumn, e.Column);
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
 

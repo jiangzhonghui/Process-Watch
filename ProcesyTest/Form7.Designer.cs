@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
             this.addButton = new System.Windows.Forms.Button();
             this.removeButton = new System.Windows.Forms.Button();
             this.createButton = new System.Windows.Forms.Button();
@@ -45,28 +43,11 @@
             this.toButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.sortButton1 = new System.Windows.Forms.Button();
+            this.sortButton2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.CheckOnClick = true;
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(12, 12);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(160, 214);
-            this.checkedListBox1.TabIndex = 0;
-            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
-            // 
-            // checkedListBox2
-            // 
-            this.checkedListBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkedListBox2.CheckOnClick = true;
-            this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(212, 12);
-            this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(160, 214);
-            this.checkedListBox2.TabIndex = 1;
-            this.checkedListBox2.SelectedIndexChanged += new System.EventHandler(this.checkedListBox2_SelectedIndexChanged);
             // 
             // addButton
             // 
@@ -95,9 +76,9 @@
             // createButton
             // 
             this.createButton.Enabled = false;
-            this.createButton.Location = new System.Drawing.Point(12, 261);
+            this.createButton.Location = new System.Drawing.Point(8, 240);
             this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(363, 47);
+            this.createButton.Size = new System.Drawing.Size(367, 47);
             this.createButton.TabIndex = 4;
             this.createButton.Text = "Create";
             this.createButton.UseVisualStyleBackColor = true;
@@ -105,47 +86,47 @@
             // 
             // selectAllButton1
             // 
-            this.selectAllButton1.Location = new System.Drawing.Point(58, 232);
+            this.selectAllButton1.Location = new System.Drawing.Point(68, 211);
             this.selectAllButton1.Name = "selectAllButton1";
             this.selectAllButton1.Size = new System.Drawing.Size(40, 23);
             this.selectAllButton1.TabIndex = 5;
-            this.selectAllButton1.Text = "all";
+            this.selectAllButton1.Text = "All";
             this.selectAllButton1.UseVisualStyleBackColor = true;
             this.selectAllButton1.Click += new System.EventHandler(this.selectAllButton1_Click);
             // 
             // selectNoneButton1
             // 
-            this.selectNoneButton1.Location = new System.Drawing.Point(12, 232);
+            this.selectNoneButton1.Location = new System.Drawing.Point(8, 211);
             this.selectNoneButton1.Name = "selectNoneButton1";
-            this.selectNoneButton1.Size = new System.Drawing.Size(40, 23);
+            this.selectNoneButton1.Size = new System.Drawing.Size(54, 23);
             this.selectNoneButton1.TabIndex = 6;
-            this.selectNoneButton1.Text = "none";
+            this.selectNoneButton1.Text = "None";
             this.selectNoneButton1.UseVisualStyleBackColor = true;
             this.selectNoneButton1.Click += new System.EventHandler(this.selectNoneButton1_Click);
             // 
             // selectAllButton2
             // 
-            this.selectAllButton2.Location = new System.Drawing.Point(286, 232);
+            this.selectAllButton2.Location = new System.Drawing.Point(275, 211);
             this.selectAllButton2.Name = "selectAllButton2";
             this.selectAllButton2.Size = new System.Drawing.Size(40, 23);
             this.selectAllButton2.TabIndex = 7;
-            this.selectAllButton2.Text = "all";
+            this.selectAllButton2.Text = "All";
             this.selectAllButton2.UseVisualStyleBackColor = true;
             this.selectAllButton2.Click += new System.EventHandler(this.selectAllButton2_Click);
             // 
             // selectNoneButton2
             // 
-            this.selectNoneButton2.Location = new System.Drawing.Point(332, 232);
+            this.selectNoneButton2.Location = new System.Drawing.Point(321, 211);
             this.selectNoneButton2.Name = "selectNoneButton2";
-            this.selectNoneButton2.Size = new System.Drawing.Size(40, 23);
+            this.selectNoneButton2.Size = new System.Drawing.Size(54, 23);
             this.selectNoneButton2.TabIndex = 8;
-            this.selectNoneButton2.Text = "none";
+            this.selectNoneButton2.Text = "None";
             this.selectNoneButton2.UseVisualStyleBackColor = true;
             this.selectNoneButton2.Click += new System.EventHandler(this.selectNoneButton2_Click);
             // 
             // pathButton
             // 
-            this.pathButton.Location = new System.Drawing.Point(12, 327);
+            this.pathButton.Location = new System.Drawing.Point(7, 328);
             this.pathButton.Name = "pathButton";
             this.pathButton.Size = new System.Drawing.Size(86, 23);
             this.pathButton.TabIndex = 10;
@@ -156,7 +137,7 @@
             // pathLabel
             // 
             this.pathLabel.AutoSize = true;
-            this.pathLabel.Location = new System.Drawing.Point(17, 311);
+            this.pathLabel.Location = new System.Drawing.Point(12, 312);
             this.pathLabel.Name = "pathLabel";
             this.pathLabel.Size = new System.Drawing.Size(28, 13);
             this.pathLabel.TabIndex = 11;
@@ -165,7 +146,7 @@
             // fromCheckBox
             // 
             this.fromCheckBox.AutoSize = true;
-            this.fromCheckBox.Location = new System.Drawing.Point(220, 333);
+            this.fromCheckBox.Location = new System.Drawing.Point(219, 350);
             this.fromCheckBox.Name = "fromCheckBox";
             this.fromCheckBox.Size = new System.Drawing.Size(49, 17);
             this.fromCheckBox.TabIndex = 12;
@@ -176,7 +157,7 @@
             // toCheckBox
             // 
             this.toCheckBox.AutoSize = true;
-            this.toCheckBox.Location = new System.Drawing.Point(220, 386);
+            this.toCheckBox.Location = new System.Drawing.Point(219, 403);
             this.toCheckBox.Name = "toCheckBox";
             this.toCheckBox.Size = new System.Drawing.Size(39, 17);
             this.toCheckBox.TabIndex = 13;
@@ -187,7 +168,7 @@
             // fromButton
             // 
             this.fromButton.Enabled = false;
-            this.fromButton.Location = new System.Drawing.Point(230, 356);
+            this.fromButton.Location = new System.Drawing.Point(229, 373);
             this.fromButton.Name = "fromButton";
             this.fromButton.Size = new System.Drawing.Size(75, 23);
             this.fromButton.TabIndex = 14;
@@ -198,7 +179,7 @@
             // toButton
             // 
             this.toButton.Enabled = false;
-            this.toButton.Location = new System.Drawing.Point(230, 409);
+            this.toButton.Location = new System.Drawing.Point(229, 426);
             this.toButton.Name = "toButton";
             this.toButton.Size = new System.Drawing.Size(75, 23);
             this.toButton.TabIndex = 15;
@@ -209,17 +190,65 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(209, 311);
+            this.label1.Location = new System.Drawing.Point(208, 328);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 16;
             this.label1.Text = "Time range";
+            // 
+            // listView1
+            // 
+            this.listView1.CheckBoxes = true;
+            this.listView1.Location = new System.Drawing.Point(8, 12);
+            this.listView1.MultiSelect = false;
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(164, 193);
+            this.listView1.TabIndex = 17;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.List;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
+            // listView2
+            // 
+            this.listView2.CheckBoxes = true;
+            this.listView2.Location = new System.Drawing.Point(211, 12);
+            this.listView2.MultiSelect = false;
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(164, 193);
+            this.listView2.TabIndex = 18;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.List;
+            this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
+            // 
+            // sortButton1
+            // 
+            this.sortButton1.Location = new System.Drawing.Point(114, 211);
+            this.sortButton1.Name = "sortButton1";
+            this.sortButton1.Size = new System.Drawing.Size(58, 23);
+            this.sortButton1.TabIndex = 19;
+            this.sortButton1.Text = "Sort";
+            this.sortButton1.UseVisualStyleBackColor = true;
+            this.sortButton1.Click += new System.EventHandler(this.sortButton1_Click);
+            // 
+            // sortButton2
+            // 
+            this.sortButton2.Location = new System.Drawing.Point(211, 211);
+            this.sortButton2.Name = "sortButton2";
+            this.sortButton2.Size = new System.Drawing.Size(58, 23);
+            this.sortButton2.TabIndex = 20;
+            this.sortButton2.Text = "Sort";
+            this.sortButton2.UseVisualStyleBackColor = true;
+            this.sortButton2.Click += new System.EventHandler(this.sortButton2_Click);
             // 
             // Form7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 476);
+            this.Controls.Add(this.sortButton2);
+            this.Controls.Add(this.sortButton1);
+            this.Controls.Add(this.listView2);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.toButton);
             this.Controls.Add(this.fromButton);
@@ -234,8 +263,6 @@
             this.Controls.Add(this.createButton);
             this.Controls.Add(this.removeButton);
             this.Controls.Add(this.addButton);
-            this.Controls.Add(this.checkedListBox2);
-            this.Controls.Add(this.checkedListBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form7";
@@ -248,8 +275,6 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.CheckedListBox checkedListBox2;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.Button createButton;
@@ -265,5 +290,9 @@
         private System.Windows.Forms.Button toButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.Button sortButton1;
+        private System.Windows.Forms.Button sortButton2;
     }
 }

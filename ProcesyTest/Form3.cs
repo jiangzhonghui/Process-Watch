@@ -21,16 +21,10 @@ namespace ProcesyTest
             InitializeComponent();
         }
 
-        void RefreshProcessesListBox()
-        {
-            listBox1.Items.Clear();
-            listBox1.Items.AddRange(watcher.Processes.ToArray());
-        }
-
         public Form3(Watcher watcher) : this()
         {
             this.watcher = watcher;
-            RefreshProcessesListBox();
+            Utility.RefreshProcessesListView(listView1, watcher);
         }
 
         private void Form3_Load(object sender, EventArgs e)
@@ -56,18 +50,18 @@ namespace ProcesyTest
                 }
             }
 
-            foreach (var item in listBox1.SelectedItems)
+            foreach (ListViewItem item in listView1.SelectedItems)
             {
                 try
                 {
-                    watcher.DeleteProcessName(item.ToString());
+                    watcher.DeleteProcessName(item.Text);
                 }
                 catch (KeyNotFoundException)
                 {
-
+                    throw;
                 }
             }
-            RefreshProcessesListBox();
+            Utility.RefreshProcessesListView(listView1, watcher);
         }
 
         //new form where you can add processes
@@ -78,16 +72,9 @@ namespace ProcesyTest
             if(result == DialogResult.OK)
             {
                 watcher.LoadProcessName(form.processName);
-                RefreshProcessesListBox();
+                Utility.RefreshProcessesListView(listView1, watcher);
                 watcher.SaveSetttings();
             }
-
-            //test
-            //Random random = new Random();
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    watcher.LoadProcessName(random.Next().ToString());
-            //}
         }
 
         //new form where you can choose currently working processes to add
@@ -98,37 +85,42 @@ namespace ProcesyTest
             if (result == DialogResult.OK)
             {
                 watcher.LoadProcessName(form.processesNames.ToArray());
-                RefreshProcessesListBox();
+                Utility.RefreshProcessesListView(listView1, watcher);
                 watcher.SaveSetttings();
             }
         }
 
         private void listBox1_MouseCaptureChanged(object sender, EventArgs e)
         {
-            RefreshProcessesListBox();
+            Utility.RefreshProcessesListView(listView1, watcher);
         }
 
-        private void SetAllListBoxItems(bool state)
-        {
-            for (int i = 0; i < listBox1.Items.Count; i++)
-            {
-                listBox1.SetSelected(i, state);
-            }
-        }
 
         private void selectAllButton_Click(object sender, EventArgs e)
         {
-            SetAllListBoxItems(true);
+            Utility.ChceckAllListViewItems(listView1, true);
         }
 
         private void selectNoneButton_Click(object sender, EventArgs e)
         {
-            SetAllListBoxItems(false);
+            Utility.ChceckAllListViewItems(listView1, false);
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox1.SelectedItems.Count > 0)
+
+        }
+
+        int sortColumn = -1;
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Utility.ListViewSort(listView1, ref sortColumn, 0);
+        }
+
+        private void listView1_ItemChecked(object sender, ItemCheckedEventArgs e)
+        {
+            if (listView1.CheckedItems.Count > 0)
             {
                 deleteButton.Enabled = true;
             }
@@ -136,11 +128,6 @@ namespace ProcesyTest
             {
                 deleteButton.Enabled = false;
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
         }
 
     }

@@ -28,23 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.deleteButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.scanButton = new System.Windows.Forms.Button();
             this.selectAllButton = new System.Windows.Forms.Button();
             this.selectNoneButton = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 62);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBox1.Size = new System.Drawing.Size(260, 238);
-            this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // deleteButton
             // 
@@ -97,17 +88,42 @@
             this.selectNoneButton.UseVisualStyleBackColor = true;
             this.selectNoneButton.Click += new System.EventHandler(this.selectNoneButton_Click);
             // 
+            // listView1
+            // 
+            this.listView1.CheckBoxes = true;
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(12, 63);
+            this.listView1.MultiSelect = false;
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(259, 237);
+            this.listView1.TabIndex = 6;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.List;
+            this.listView1.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.listView1_ItemChecked);
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(237, 306);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(35, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Sort";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 333);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.selectNoneButton);
             this.Controls.Add(this.selectAllButton);
             this.Controls.Add(this.scanButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.deleteButton);
-            this.Controls.Add(this.listBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -121,12 +137,13 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button scanButton;
         private System.Windows.Forms.Button selectAllButton;
         private System.Windows.Forms.Button selectNoneButton;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button button1;
 
     }
 }

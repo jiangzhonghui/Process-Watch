@@ -30,5 +30,59 @@ namespace ProcesyTest
 
             listView.Sort();
         }
+
+
+        public static void RefreshProcessesListView(ListView listView, Watcher watcher)
+        {
+            listView.Items.Clear();
+
+            foreach (ProcessToWatch p in watcher.Processes)
+            {
+                ListViewItem t = new ListViewItem(p.ToString());
+                t.Text = p.ToString();
+                t.Name = p.ToString();
+                listView.Items.Add(t);   
+            }
+        }
+
+        public static void ChceckAllListViewItems(ListView listView, bool state)
+        {
+            for (int i = 0; i < listView.Items.Count; i++)
+            {
+                listView.Items[i].Checked = state;
+            }
+        }
+
+        public static void SelectAllListView(ListView listView, bool state)
+        {
+            foreach (ListViewItem item in listView.Items)
+            {
+                item.Selected = state;
+            }
+        }
+
+        public static void ListViewCheckOneClick(ListView listView)
+        {
+            if (listView.SelectedItems.Count > 0)
+            {
+                if (listView.SelectedItems[0].Checked == true)
+                    listView.SelectedItems[0].Checked = false;
+                else
+                    listView.SelectedItems[0].Checked = true;
+
+            }
+        }
+
+        public static void RemoveCheckListViewItems(ListView listView)
+        {
+            while (listView.CheckedIndices.Count > 0)
+            {
+                listView.Items.RemoveAt(listView.CheckedIndices[0]);
+            }
+        }
     }
+
+
+
+
 }

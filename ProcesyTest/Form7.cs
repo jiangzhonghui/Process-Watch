@@ -22,7 +22,7 @@ namespace ProcesyTest
 
         private void Form7_Load(object sender, EventArgs e)
         {
-            LoadListToSelect();
+            Utility.RefreshProcessesListView(listView1, watcher);
 
             //wpisanie ustawionego czasu
             string fromTime = Properties.Settings.Default.FromTime;
@@ -60,24 +60,21 @@ namespace ProcesyTest
             }
         }
 
-        private void LoadListToSelect()
-        {
-            checkedListBox1.Items.AddRange(watcher.Processes.ToArray());
-        }
-        
         private void addButton_Click(object sender, EventArgs e)
         {
-            foreach (var item in checkedListBox1.CheckedItems)
+            foreach (ListViewItem item in listView1.CheckedItems)
             {
-                if (!checkedListBox2.Items.Contains(item))
+                ListViewItem lv = listView2.FindItemWithText(item.Text);
+
+                if(lv == null)
                 {
-                    checkedListBox2.Items.Add(item);
+                    listView2.Items.Add(new ListViewItem(item.Text));
                 }
             }
 
-            SetAllListBoxItems(checkedListBox1, false);
+            Utility.ChceckAllListViewItems(listView1, false);
 
-            if (checkedListBox2.Items.Count > 0)
+            if (listView2.Items.Count > 0)
             {
                 createButton.Enabled = true;
             }
@@ -87,16 +84,19 @@ namespace ProcesyTest
         {
             while (list.CheckedItems.Count > 0)
             {
-                list.Items.Remove(checkedListBox2.CheckedItems[0]);
+                list.Items.Remove(listView2.CheckedItems[0]);
             }
         }
 
+        
+
         private void removeButton_Click(object sender, EventArgs e)
         {
+           // foreach
+            Utility.RemoveCheckListViewItems(listView2);
+            Utility.ChceckAllListViewItems(listView2, false);
 
-            ClearCheckedListBox(checkedListBox2);
-
-            if (checkedListBox2.Items.Count < 1)
+            if (listView2.Items.Count < 1)
             {
                 createButton.Enabled = false;
             }
@@ -104,40 +104,32 @@ namespace ProcesyTest
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            checkedListBox1.SelectedItem = null;
+            Utility.SelectAllListView(listView1, false);
         }
 
         private void checkedListBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            checkedListBox2.SelectedItem = null;
-        }
-
-        private void SetAllListBoxItems(CheckedListBox listBox, bool state)
-        {
-            for (int i = 0; i < listBox.Items.Count; i++)
-            {
-                listBox.SetItemChecked(i, state);
-            }
+            Utility.SelectAllListView(listView2, false);
         }
 
         private void selectNoneButton1_Click(object sender, EventArgs e)
         {
-            SetAllListBoxItems(checkedListBox1, false);
+            Utility.ChceckAllListViewItems(listView1, false);
         }
 
         private void selectNoneButton2_Click(object sender, EventArgs e)
         {
-            SetAllListBoxItems(checkedListBox2, false);
+            Utility.ChceckAllListViewItems(listView2, false);
         }
 
         private void selectAllButton2_Click(object sender, EventArgs e)
         {
-            SetAllListBoxItems(checkedListBox2, true);
+            Utility.ChceckAllListViewItems(listView2, true);
         }
 
         private void selectAllButton1_Click(object sender, EventArgs e)
         {
-            SetAllListBoxItems(checkedListBox1, true);
+            Utility.ChceckAllListViewItems(listView1, true);
         }
 
         private void fromCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -183,7 +175,7 @@ namespace ProcesyTest
         private void createButton_Click(object sender, EventArgs e)
         {
             List<ProcessToWatch> toReport = new List<ProcessToWatch>();
-            foreach (var p in checkedListBox2.Items)
+            foreach (var p in listView2.Items)
             {
                 toReport.Add(watcher.GetProcessByName(p.ToString()));
             }
@@ -207,9 +199,9 @@ namespace ProcesyTest
 
             createButton.Enabled = false;
 
-            while (checkedListBox2.Items.Count > 0)
+            while (listView2.Items.Count > 0)
             {
-                checkedListBox2.Items.RemoveAt(0);
+                listView2.Items.RemoveAt(0);
             }
 
         }
@@ -223,6 +215,29 @@ namespace ProcesyTest
                 Properties.Settings.Default.Save();
                 SetPathLabel();
             }
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private int sortColumn1 = -1;
+        private int sortColumn2 = -1;
+
+        private void sortButton1_Click(object sender, EventArgs e)
+        {
+            Utility.ListViewSort(listView1, ref sortColumn1, 0);
+        }
+
+        private void sortButton2_Click(object sender, EventArgs e)
+        {
+            Utility.ListViewSort(listView2, ref sortColumn2, 0);
         }
 
     }
