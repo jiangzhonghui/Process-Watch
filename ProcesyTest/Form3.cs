@@ -50,7 +50,7 @@ namespace ProcesyTest
                 }
             }
 
-            foreach (ListViewItem item in listView1.SelectedItems)
+            foreach (ListViewItem item in listView1.CheckedItems)
             {
                 try
                 {
@@ -68,6 +68,7 @@ namespace ProcesyTest
         private void addButton_Click(object sender, EventArgs e)
         {
             Form4 form = new Form4();
+            form.Text = addButton.Text;
             var result = form.ShowDialog();
             if(result == DialogResult.OK)
             {
@@ -81,6 +82,7 @@ namespace ProcesyTest
         private void scanButton_Click(object sender, EventArgs e)
         {
             Form5 form = new Form5();
+            form.Text = scanButton.Text;
             var result = form.ShowDialog();
             if (result == DialogResult.OK)
             {

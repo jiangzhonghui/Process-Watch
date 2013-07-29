@@ -173,6 +173,7 @@ namespace ProcesyTest
         private void processManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form3 form = new Form3(watcher);
+            form.Text = processManagerToolStripMenuItem.Text;
             form.ShowDialog();
         }
 
@@ -189,6 +190,7 @@ namespace ProcesyTest
         private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form6 form = new Form6();
+            form.Text = preferencesToolStripMenuItem.Text;
             form.ShowDialog();
         }
 
@@ -207,6 +209,7 @@ namespace ProcesyTest
         private void reportCreatorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form7 form = new Form7(watcher);
+            form.Text = reportCreatorToolStripMenuItem.Text;
             form.Show();
         }
 

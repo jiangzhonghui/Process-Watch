@@ -108,7 +108,6 @@
             this.MinimizeBox = false;
             this.Name = "Form4";
             this.ShowIcon = false;
-            this.Text = "Form4";
             this.Load += new System.EventHandler(this.AddNewProcessForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

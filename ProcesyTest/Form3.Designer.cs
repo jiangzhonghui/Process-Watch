@@ -44,7 +44,7 @@
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 44);
             this.deleteButton.TabIndex = 1;
-            this.deleteButton.Text = "remove selected";
+            this.deleteButton.Text = "Remove selected";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
@@ -54,7 +54,7 @@
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 44);
             this.addButton.TabIndex = 2;
-            this.addButton.Text = "add new process";
+            this.addButton.Text = "Add new process";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
@@ -64,7 +64,7 @@
             this.scanButton.Name = "scanButton";
             this.scanButton.Size = new System.Drawing.Size(75, 43);
             this.scanButton.TabIndex = 3;
-            this.scanButton.Text = "scan processes";
+            this.scanButton.Text = "Scan processes";
             this.scanButton.UseVisualStyleBackColor = true;
             this.scanButton.Click += new System.EventHandler(this.scanButton_Click);
             // 
@@ -129,7 +129,7 @@
             this.MinimizeBox = false;
             this.Name = "Form3";
             this.ShowIcon = false;
-            this.Text = "Form3";
+            this.Text = "Process manager";
             this.Load += new System.EventHandler(this.Form3_Load);
             this.ResumeLayout(false);
 

@@ -70,7 +70,7 @@
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.monthCalendar1);
             this.Name = "Form8";
-            this.Text = "Form8";
+            this.Text = "Select date";
             this.ResumeLayout(false);
 
         }
