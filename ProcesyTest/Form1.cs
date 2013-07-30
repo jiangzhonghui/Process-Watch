@@ -202,10 +202,8 @@ namespace ProcesyTest
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //ReportCreator x = new ReportCreator(watcher.Processes);
-            //DateTime data = new DateTime(2010, 11, 12);
-            //DateTime datab = new DateTime(2013, 1, 1);
-            //x.Create(data, datab);
+            MessageBox.Show(Utility.About(), aboutToolStripMenuItem.Text, MessageBoxButtons.OK);
+
         }
 
         private void reportCreatorToolStripMenuItem_Click(object sender, EventArgs e)

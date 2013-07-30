@@ -33,7 +33,7 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label1 = new System.Windows.Forms.Label();
+            this.averageTimeLabel = new System.Windows.Forms.Label();
             this.totalTimeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -73,19 +73,19 @@
             this.columnHeader3.Text = "End Time";
             this.columnHeader3.Width = 96;
             // 
-            // label1
+            // averageTimeLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 261);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Total time";
+            this.averageTimeLabel.AutoSize = true;
+            this.averageTimeLabel.Location = new System.Drawing.Point(12, 263);
+            this.averageTimeLabel.Name = "averageTimeLabel";
+            this.averageTimeLabel.Size = new System.Drawing.Size(53, 13);
+            this.averageTimeLabel.TabIndex = 1;
+            this.averageTimeLabel.Text = "Total time";
             // 
             // totalTimeLabel
             // 
             this.totalTimeLabel.AutoSize = true;
-            this.totalTimeLabel.Location = new System.Drawing.Point(71, 261);
+            this.totalTimeLabel.Location = new System.Drawing.Point(12, 276);
             this.totalTimeLabel.Name = "totalTimeLabel";
             this.totalTimeLabel.Size = new System.Drawing.Size(35, 13);
             this.totalTimeLabel.TabIndex = 2;
@@ -95,9 +95,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(268, 283);
+            this.ClientSize = new System.Drawing.Size(268, 298);
             this.Controls.Add(this.totalTimeLabel);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.averageTimeLabel);
             this.Controls.Add(this.listView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -116,7 +116,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label averageTimeLabel;
         private System.Windows.Forms.Label totalTimeLabel;
     }
 }

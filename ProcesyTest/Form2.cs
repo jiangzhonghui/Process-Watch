@@ -35,8 +35,6 @@ namespace ProcesyTest
         {
             historyDetailList = process.processHistory;
 
-            TimeSpan totalTime = new TimeSpan();
-
             foreach (ProcessHistoryDetail detail in historyDetailList)
             {
                 //historyListViewItem.Add(new ListViewItem());
@@ -44,13 +42,15 @@ namespace ProcesyTest
                 historyListViewItem.Add(new ListViewItem(DateTimeFormatter.FormatLong(detail.Start)));
                 historyListViewItem.Last().SubItems.Add(TimeSpanFormatter.Format(detail.Duration));
                 historyListViewItem.Last().SubItems.Add(DateTimeFormatter.FormatLong(detail.End));
-
-                totalTime += detail.Duration;
             }
 
             listView1.Items.AddRange(historyListViewItem.ToArray());
 
-            totalTimeLabel.Text = TimeSpanFormatter.Format(totalTime);
+            ReportItem details = new ReportItem(process.processHistory);
+
+
+            totalTimeLabel.Text = String.Format("Total time: {0}", TimeSpanFormatter.Format(details.TotalTime));
+            averageTimeLabel.Text = String.Format("Average time: {0}", TimeSpanFormatter.Format(details.AverageTime));
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)

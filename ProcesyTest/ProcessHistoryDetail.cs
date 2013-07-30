@@ -15,7 +15,7 @@ namespace ProcesyTest
         [XmlIgnore]
         public TimeSpan Duration;
 
-        public String duration
+        public String DurationXml
         {
             set
             {

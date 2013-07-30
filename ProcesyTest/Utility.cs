@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace ProcesyTest
 {
@@ -79,6 +80,20 @@ namespace ProcesyTest
             {
                 listView.Items.RemoveAt(listView.CheckedIndices[0]);
             }
+        }
+
+        public static string About()
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+
+            StringBuilder str = new StringBuilder();
+            str.Append(assembly.GetName().Name);
+            str.AppendLine();
+            //str.AppendFormat("Version: {0}", assembly.GetName().Version.ToString());
+            //str.AppendLine();
+            str.AppendFormat("Author: {0}", "Michal Dardas");
+
+            return str.ToString();
         }
     }
 
