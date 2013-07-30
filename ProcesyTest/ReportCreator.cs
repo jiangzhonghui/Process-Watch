@@ -33,6 +33,7 @@ namespace ProcesyTest
                 using(StreamWriter write = new StreamWriter(path))
                 {
                     xml.Serialize(write, itemsToReport);
+                    NLog.LogManager.GetCurrentClassLogger().Info(String.Format("Create report for processes: {0}", CreateLog()));
                 }
             }
             catch(IOException e)
@@ -40,6 +41,17 @@ namespace ProcesyTest
                 NLog.LogManager.GetCurrentClassLogger().Error(e.Message);
             }
 
+        }
+
+        private string CreateLog()
+        {
+            StringBuilder str = new StringBuilder();
+            foreach (ReportItem item in itemsToReport)
+            {
+                str.AppendFormat("{0} ", item.Name);
+            }
+
+            return str.ToString();
         }
 
         //private string CreateFilename()

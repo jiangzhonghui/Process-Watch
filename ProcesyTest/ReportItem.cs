@@ -14,7 +14,7 @@ namespace ProcesyTest
 
         public ReportItem(string name, List<ProcessHistoryDetail> history)
         {
-            this.name = name;
+            this.Name = name;
             this.History = history;
         }
 
@@ -22,7 +22,7 @@ namespace ProcesyTest
             : this(String.Empty, history) { }
 
         [XmlAttribute("Name")]
-        public string name;
+        public string Name;
         [XmlArray("Details")]
         public List<ProcessHistoryDetail> History;
 

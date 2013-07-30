@@ -13,6 +13,8 @@ namespace ProcesyTest
         [STAThread]
         static void Main()
         {
+            NLog.LogManager.GetCurrentClassLogger().Info("Start");
+            
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(LogUnhandledException);
             Application.ThreadException +=
                 new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);

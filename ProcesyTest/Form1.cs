@@ -67,7 +67,6 @@ namespace ProcesyTest
             this.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
             notifyIcon1.Text = this.Text;
 
-            LogManager.GetCurrentClassLogger().Info("Started");
             if (Properties.Settings.Default.StartInTray)
             {
                 HideToTray();
@@ -137,7 +136,7 @@ namespace ProcesyTest
         {
             watcher.SaveProcessesHistory();
             watcher.SaveSetttings();
-            NLog.LogManager.GetCurrentClassLogger().Info("Closed");
+            NLog.LogManager.GetCurrentClassLogger().Info("Close");
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
