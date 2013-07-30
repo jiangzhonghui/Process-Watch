@@ -35,5 +35,14 @@ namespace ProcesyTest
             this.End = source.End;
             this.Duration = source.Duration;
         }
+
+
+
+        public ProcessHistoryDetail(DateTime start, DateTime end)
+        {
+            this.Start = start;
+            this.End = end;
+            this.Duration = end - start;
+        }
     }
 }

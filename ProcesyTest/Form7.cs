@@ -175,9 +175,9 @@ namespace ProcesyTest
         private void createButton_Click(object sender, EventArgs e)
         {
             List<ProcessToWatch> toReport = new List<ProcessToWatch>();
-            foreach (var p in listView2.Items)
+            foreach (ListViewItem p in listView2.Items)
             {
-                toReport.Add(watcher.GetProcessByName(p.ToString()));
+                toReport.Add(watcher.GetProcessByName(p.Text));
             }
 
             ReportCreator report = new ReportCreator(toReport) { ReportPath = pathLabel.Text };

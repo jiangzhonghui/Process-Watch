@@ -44,16 +44,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listView2 = new System.Windows.Forms.ListView();
             this.sortButton1 = new System.Windows.Forms.Button();
             this.sortButton2 = new System.Windows.Forms.Button();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // addButton
             // 
             this.addButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.addButton.Location = new System.Drawing.Point(178, 84);
+            this.addButton.Location = new System.Drawing.Point(178, 249);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(27, 20);
             this.addButton.TabIndex = 2;
@@ -65,7 +67,7 @@
             // 
             this.removeButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.removeButton.Location = new System.Drawing.Point(178, 108);
+            this.removeButton.Location = new System.Drawing.Point(178, 273);
             this.removeButton.Name = "removeButton";
             this.removeButton.Size = new System.Drawing.Size(27, 20);
             this.removeButton.TabIndex = 3;
@@ -76,7 +78,7 @@
             // createButton
             // 
             this.createButton.Enabled = false;
-            this.createButton.Location = new System.Drawing.Point(8, 240);
+            this.createButton.Location = new System.Drawing.Point(8, 328);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(367, 47);
             this.createButton.TabIndex = 4;
@@ -86,7 +88,7 @@
             // 
             // selectAllButton1
             // 
-            this.selectAllButton1.Location = new System.Drawing.Point(68, 211);
+            this.selectAllButton1.Location = new System.Drawing.Point(68, 299);
             this.selectAllButton1.Name = "selectAllButton1";
             this.selectAllButton1.Size = new System.Drawing.Size(40, 23);
             this.selectAllButton1.TabIndex = 5;
@@ -96,7 +98,7 @@
             // 
             // selectNoneButton1
             // 
-            this.selectNoneButton1.Location = new System.Drawing.Point(8, 211);
+            this.selectNoneButton1.Location = new System.Drawing.Point(8, 299);
             this.selectNoneButton1.Name = "selectNoneButton1";
             this.selectNoneButton1.Size = new System.Drawing.Size(54, 23);
             this.selectNoneButton1.TabIndex = 6;
@@ -106,7 +108,7 @@
             // 
             // selectAllButton2
             // 
-            this.selectAllButton2.Location = new System.Drawing.Point(275, 211);
+            this.selectAllButton2.Location = new System.Drawing.Point(275, 299);
             this.selectAllButton2.Name = "selectAllButton2";
             this.selectAllButton2.Size = new System.Drawing.Size(40, 23);
             this.selectAllButton2.TabIndex = 7;
@@ -116,7 +118,7 @@
             // 
             // selectNoneButton2
             // 
-            this.selectNoneButton2.Location = new System.Drawing.Point(321, 211);
+            this.selectNoneButton2.Location = new System.Drawing.Point(321, 299);
             this.selectNoneButton2.Name = "selectNoneButton2";
             this.selectNoneButton2.Size = new System.Drawing.Size(54, 23);
             this.selectNoneButton2.TabIndex = 8;
@@ -126,7 +128,7 @@
             // 
             // pathButton
             // 
-            this.pathButton.Location = new System.Drawing.Point(7, 328);
+            this.pathButton.Location = new System.Drawing.Point(7, 416);
             this.pathButton.Name = "pathButton";
             this.pathButton.Size = new System.Drawing.Size(86, 23);
             this.pathButton.TabIndex = 10;
@@ -137,7 +139,7 @@
             // pathLabel
             // 
             this.pathLabel.AutoSize = true;
-            this.pathLabel.Location = new System.Drawing.Point(12, 312);
+            this.pathLabel.Location = new System.Drawing.Point(12, 400);
             this.pathLabel.Name = "pathLabel";
             this.pathLabel.Size = new System.Drawing.Size(28, 13);
             this.pathLabel.TabIndex = 11;
@@ -146,7 +148,7 @@
             // fromCheckBox
             // 
             this.fromCheckBox.AutoSize = true;
-            this.fromCheckBox.Location = new System.Drawing.Point(219, 350);
+            this.fromCheckBox.Location = new System.Drawing.Point(219, 438);
             this.fromCheckBox.Name = "fromCheckBox";
             this.fromCheckBox.Size = new System.Drawing.Size(49, 17);
             this.fromCheckBox.TabIndex = 12;
@@ -157,7 +159,7 @@
             // toCheckBox
             // 
             this.toCheckBox.AutoSize = true;
-            this.toCheckBox.Location = new System.Drawing.Point(219, 403);
+            this.toCheckBox.Location = new System.Drawing.Point(219, 491);
             this.toCheckBox.Name = "toCheckBox";
             this.toCheckBox.Size = new System.Drawing.Size(39, 17);
             this.toCheckBox.TabIndex = 13;
@@ -168,7 +170,7 @@
             // fromButton
             // 
             this.fromButton.Enabled = false;
-            this.fromButton.Location = new System.Drawing.Point(229, 373);
+            this.fromButton.Location = new System.Drawing.Point(229, 461);
             this.fromButton.Name = "fromButton";
             this.fromButton.Size = new System.Drawing.Size(75, 23);
             this.fromButton.TabIndex = 14;
@@ -179,7 +181,7 @@
             // toButton
             // 
             this.toButton.Enabled = false;
-            this.toButton.Location = new System.Drawing.Point(229, 426);
+            this.toButton.Location = new System.Drawing.Point(229, 514);
             this.toButton.Name = "toButton";
             this.toButton.Size = new System.Drawing.Size(75, 23);
             this.toButton.TabIndex = 15;
@@ -190,7 +192,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(208, 328);
+            this.label1.Location = new System.Drawing.Point(208, 416);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 16;
@@ -199,30 +201,39 @@
             // listView1
             // 
             this.listView1.CheckBoxes = true;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
             this.listView1.Location = new System.Drawing.Point(8, 12);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(164, 193);
+            this.listView1.Size = new System.Drawing.Size(164, 281);
             this.listView1.TabIndex = 17;
             this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.List;
+            this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Process name";
+            this.columnHeader1.Width = 160;
             // 
             // listView2
             // 
             this.listView2.CheckBoxes = true;
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2});
             this.listView2.Location = new System.Drawing.Point(211, 12);
             this.listView2.MultiSelect = false;
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(164, 193);
+            this.listView2.Size = new System.Drawing.Size(164, 281);
             this.listView2.TabIndex = 18;
             this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.List;
+            this.listView2.View = System.Windows.Forms.View.Details;
             this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
             // 
             // sortButton1
             // 
-            this.sortButton1.Location = new System.Drawing.Point(114, 211);
+            this.sortButton1.Location = new System.Drawing.Point(114, 299);
             this.sortButton1.Name = "sortButton1";
             this.sortButton1.Size = new System.Drawing.Size(58, 23);
             this.sortButton1.TabIndex = 19;
@@ -232,7 +243,7 @@
             // 
             // sortButton2
             // 
-            this.sortButton2.Location = new System.Drawing.Point(211, 211);
+            this.sortButton2.Location = new System.Drawing.Point(211, 299);
             this.sortButton2.Name = "sortButton2";
             this.sortButton2.Size = new System.Drawing.Size(58, 23);
             this.sortButton2.TabIndex = 20;
@@ -240,11 +251,16 @@
             this.sortButton2.UseVisualStyleBackColor = true;
             this.sortButton2.Click += new System.EventHandler(this.sortButton2_Click);
             // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Process name";
+            this.columnHeader2.Width = 180;
+            // 
             // Form7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 476);
+            this.ClientSize = new System.Drawing.Size(384, 544);
             this.Controls.Add(this.sortButton2);
             this.Controls.Add(this.sortButton1);
             this.Controls.Add(this.listView2);
@@ -294,5 +310,7 @@
         private System.Windows.Forms.ListView listView2;
         private System.Windows.Forms.Button sortButton1;
         private System.Windows.Forms.Button sortButton2;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }

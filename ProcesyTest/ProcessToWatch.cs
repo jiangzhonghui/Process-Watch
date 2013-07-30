@@ -174,7 +174,7 @@ namespace ProcesyTest
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string programName = Path.GetFileNameWithoutExtension(System.AppDomain.CurrentDomain.FriendlyName);
-            folder = Path.Combine(path, programName, "history"); 
+            folder = Path.Combine(path, programName, "history");
         }
 
         public ProcessToWatch(string processName) : this()

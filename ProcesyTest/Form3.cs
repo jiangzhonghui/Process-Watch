@@ -39,7 +39,7 @@ namespace ProcesyTest
                 if (Properties.Settings.Default.AskExit)
                 {
                     string name = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
-                    switch (MessageBox.Show(String.Format("Are you sure you want to exit {0}?", name), name, MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                    switch (MessageBox.Show("Are you sure you want to delete these processes?", name, MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                     {
                         case System.Windows.Forms.DialogResult.Yes:
                             break;

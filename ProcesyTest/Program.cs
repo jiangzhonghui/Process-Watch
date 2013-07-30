@@ -14,6 +14,8 @@ namespace ProcesyTest
         static void Main()
         {
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(LogUnhandledException);
+            Application.ThreadException +=
+                new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new ProcesyForm());
@@ -21,10 +23,16 @@ namespace ProcesyTest
 
 
         static void LogUnhandledException(object sender, UnhandledExceptionEventArgs e)
-        {           
-            // here you can log the exception ...
+        {
+            Exception ex = e.ExceptionObject as Exception;
+            NLog.LogManager.GetCurrentClassLogger().Error(ex.Message);
         }
 
+        public static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        {
+            Exception ex = e.Exception as Exception;
+            NLog.LogManager.GetCurrentClassLogger().Error(ex.Message);
+        }
     }
 
 
