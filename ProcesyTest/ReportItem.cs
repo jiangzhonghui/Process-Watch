@@ -23,7 +23,7 @@ namespace ProcesyTest
 
         [XmlAttribute("Name")]
         public string name;
-        [XmlElement("Detail")]
+        [XmlArray("Details")]
         public List<ProcessHistoryDetail> History;
 
         [XmlIgnore]
@@ -40,13 +40,14 @@ namespace ProcesyTest
             }
         }
 
-        [XmlAttribute("TotalTime")]
+        [XmlElement("TotalTime")]
         public String TotalTimeXml
         {
             get
             {
                 return TotalTime.ToString();
             }
+            set { }
         }
 
         [XmlIgnore]
@@ -60,13 +61,14 @@ namespace ProcesyTest
             }
         }
 
-        [XmlIgnore]
+        [XmlElement("AverageTime")]
         public String AverageTimeXml
         {
             get
             {
                 return AverageTime.ToString();
             }
+            set { }
         }
 
     }

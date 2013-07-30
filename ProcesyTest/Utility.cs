@@ -89,8 +89,8 @@ namespace ProcesyTest
             StringBuilder str = new StringBuilder();
             str.Append(assembly.GetName().Name);
             str.AppendLine();
-            //str.AppendFormat("Version: {0}", assembly.GetName().Version.ToString());
-            //str.AppendLine();
+            str.AppendFormat("Version: {0}", assembly.GetName().Version.ToString());
+            str.AppendLine();
             str.AppendFormat("Author: {0}", "Michal Dardas");
 
             return str.ToString();

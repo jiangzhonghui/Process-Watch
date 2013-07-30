@@ -37,7 +37,7 @@ namespace ProcesyTest
                 {
                     fakeSerializer.Serialize(write, fakeHistory);
                 }
-                catch(IOException e)
+                catch(IOException)
                 {
 
                 }

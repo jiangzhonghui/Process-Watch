@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 namespace ProcesyTest
 {
     [Serializable]
+    [XmlRoot("Details")]
     public class ProcessHistoryDetail
     {
         public DateTime Start;
@@ -15,6 +16,7 @@ namespace ProcesyTest
         [XmlIgnore]
         public TimeSpan Duration;
 
+        [XmlElement("Duration")]
         public String DurationXml
         {
             set

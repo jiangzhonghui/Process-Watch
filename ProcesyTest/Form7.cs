@@ -44,7 +44,11 @@ namespace ProcesyTest
             const int maxLenght = 20;
 
             string path = Properties.Settings.Default.ReportPath;
-            if (path.Length > maxLenght)
+            if (String.IsNullOrWhiteSpace(path))
+            {
+                pathLabel.Text = "no path selected";
+            }
+            else if (path.Length > maxLenght)
             {
                 pathLabel.Text = "...";
 
