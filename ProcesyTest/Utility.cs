@@ -87,14 +87,14 @@ namespace ProcesyTest
             Assembly assembly = Assembly.GetExecutingAssembly();
 
             StringBuilder str = new StringBuilder();
-            str.Append(assembly.GetName().Name);
-            str.AppendLine();
-            str.AppendFormat("Version: {0}", assembly.GetName().Version.ToString());
-            str.AppendLine();
-            str.AppendFormat("Author: {0}", "Michal Dardas");
+            str.AppendFormat("{0} {1}", assembly.GetName().Name, assembly.GetName().Version.ToString());
 
             return str.ToString();
         }
+
+        public static string Email = "michal.dardas@outlook.com";
+
+        public static string Website = "https://github.com/michal-ds/Process-Watch";
     }
 
 

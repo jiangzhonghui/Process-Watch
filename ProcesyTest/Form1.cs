@@ -201,8 +201,10 @@ namespace ProcesyTest
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Utility.About(), aboutToolStripMenuItem.Text, MessageBoxButtons.OK);
-
+            //MessageBox.Show(Utility.About(), aboutToolStripMenuItem.Text, MessageBoxButtons.OK);
+            Form9 form = new Form9();
+            form.Text = aboutToolStripMenuItem.Text;
+            form.Show();
         }
 
         private void reportCreatorToolStripMenuItem_Click(object sender, EventArgs e)
